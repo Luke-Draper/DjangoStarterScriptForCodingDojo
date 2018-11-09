@@ -21,7 +21,9 @@ python ../manage.py startapp "$1"
 
 cd ../
 
-sed '/INSTALLED_APPS = \[/a     "apps.'"$1"'",' './main/settings.py'
+echo ""
+echo "adding $1 to installed apps"
+sed -i.bkp '/INSTALLED_APPS = \[/a     "apps.'"$1"'",' './main/settings.py'
 
 python manage.py makemigrations
 python manage.py migrate

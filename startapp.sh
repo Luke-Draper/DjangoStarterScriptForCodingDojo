@@ -1,8 +1,10 @@
 #!/bin/bash
+echo ""
+echo "running: source $2"
 source "$2"
 
 echo ""
-
+echo "running: django-admin startproject main"
 django-admin startproject main
 
 cd main
@@ -13,6 +15,8 @@ cd apps
 
 touch __init__.py
 
+echo ""
+echo "running: python ../manage.py startapp $1"
 python ../manage.py startapp "$1"
 
 cd ../
@@ -27,6 +31,8 @@ mkdir "./apps/$1/templates/$1"
 touch "./apps/$1/templates/$1/index.html"
 touch "./apps/$1/urls.py"
 
+echo ""
+echo "Implementing starter app"
 echo '<!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -173,7 +179,7 @@ def post(request):
 ' > "./apps/$1/views.py"
 
 echo ""
-echo 'check that => add the line : "apps.'"$1"'", : after the line : INSTALLED_APPS = [ : in main/main/settings.py before running the server'
-echo ""
-echo 'cd into main and run : python manage.py runserver : to start '
+echo 'To start django run:'
+echo 'cd main'
+echo 'python manage.py runserver'
 echo ""

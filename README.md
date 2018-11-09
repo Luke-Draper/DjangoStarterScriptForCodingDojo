@@ -19,3 +19,7 @@ And that's it! You can now run to start it up:
 cd main
 python manage.py runserver
 ```
+
+# Questions? Comments? Concerns?
+
+Submit a pull request or bug report and I'll take a look. I probably won't be maintaining this script for very long but it's under the MIT License so you can do whatever you like with it.

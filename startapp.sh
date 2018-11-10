@@ -30,7 +30,13 @@ python manage.py migrate
 
 mkdir "./apps/$1/templates"
 mkdir "./apps/$1/templates/$1"
+mkdir "./apps/$1/static"
+mkdir "./apps/$1/static/$1"
+mkdir "./apps/$1/static/$1/css"
+mkdir "./apps/$1/static/$1/js"
 touch "./apps/$1/templates/$1/index.html"
+touch "./apps/$1/static/$1/css/style.css"
+touch "./apps/$1/static/$1/js/script.js"
 touch "./apps/$1/urls.py"
 
 echo ""
@@ -63,6 +69,9 @@ echo '<!DOCTYPE html>
 			integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 			crossorigin="anonymous"
 		></script>
+		{% load static %}
+		<link rel="stylesheet" href="{% static '"'"''"$1"'/css/style.css'"'"' %}">
+		<script src="{% static '"'"''"$1"'/js/script.css'"'"' %}"></script>
 	</head>
 	<body class="bg-dark text-light">
 		<div class="container">
@@ -82,35 +91,6 @@ echo '<!DOCTYPE html>
 							name="name"
 							id="name"
 						/>
-					</div>
-					<div class="form-row p-2 justify-content-center">
-						<label class="col-sm-4 col-form-label" for="location"
-							>Dojo Location:</label
-						>
-						<select class="col-sm-8 form-control" name="location" id="location">
-							<option selected disabled value="not_chosen">Choose...</option>
-							<option value="chicago">Chicago</option>
-							<option value="san_jose">San Jose</option>
-							<option value="los_angeles">Los Angeles</option>
-							<option value="new_york">New York</option>
-						</select>
-					</div>
-					<div class="form-row p-2 justify-content-center">
-						<label class="col-sm-4 col-form-label" for="favorite_language"
-							>Favorite Language:</label
-						>
-						<select
-							class="col-sm-8 form-control"
-							name="favorite_language"
-							id="favorite_language"
-						>
-							<option selected disabled value="not_chosen">Choose...</option>
-							<option value="java">Java</option>
-							<option value="python">Python</option>
-							<option value="javascript">JavaScript</option>
-							<option value="c_sharp">C#</option>
-							<option value="other">Other</option>
-						</select>
 					</div>
 					<div class="form-group p-2 justify-content-center">
 						<label class="form-label" for="comment">Comment (Optional):</label>
